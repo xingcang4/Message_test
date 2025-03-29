@@ -10,8 +10,13 @@ const SmsScreen = () => {
   }, []);
 
   const loadSms = async () => {
-    const smsList = await fetchSms();
-    setMessages(smsList);
+    try {
+      const smsList = await fetchSms();
+      console.log('Fetched SMS:', smsList);  // 这里输出短信内容
+      setMessages(smsList);
+    } catch (error) {
+      console.error('Error fetching SMS:', error);
+    }
   };
 
   return (
